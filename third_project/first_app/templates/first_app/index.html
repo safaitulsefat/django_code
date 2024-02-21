@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+ <h1>This is about page</h1>
+    <p>{{authors}}</p>
+    <!--if else template-->
+    {% if age >= 18 and nation == 'bd' %}
+    <p>vai tumi voter</p>
+    {% else %}
+    <p>vai tumi voter na</p>
+    {% endif %}
+    <!--for loop-->
+    <table border="1" width="100%">
+        <tr>
+            <th>id</th>
+            <th>courses</th>
+            <th>teachers</th>
+        </tr>
+        {% for i in courses %}
+        <tr>
+           <td>{{i.id}}</td>
+           <td>{{i.course}}</td>
+           <td>{{i.teacher}}</td>
+        </tr>
+        {% endfor %}
+
+    </table>
+    <!--filtering-->
+    <h1>ADD: {{marks | add:2}}</h1>
+    <h1>{{name | make_list}}</h1>
+    <h1>{{name | wordcount}}</h1>
+
+    <img src="{% static 'first_app/image/img1.jpg' %}" alt="my" srcset="">
+</body>
+</html>
