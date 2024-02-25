@@ -1,0 +1,29 @@
+{% extends 'book/base.html' %}
+{% block content %}
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">BOOK_NAME</th>
+        <th scope="col">AUTHOR</th>
+        <th scope="col">CATEGORY</th>
+        <th scope="col">FIRST PUBLICATIN</th>
+        <th scope="col">LAST PUBLICATIN</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for i in form %}    
+      <tr>
+        <td>{{i.id}}</td>
+        <td>{{i.book_name}}</td>
+        <td>{{i.author}}</td>
+        <td>{{i.category}}</td>
+        <td>{{i.first_pub}}</td>
+        <td>{{i.last_pub}}</td>
+        <td><a class="btn btn-primary" href="{% url 'editbook' id=i.id%}">EDIT</a><a class="btn btn-danger" href="{% url 'deletebook' id=i.id%}">Delete</a></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% endblock %}
