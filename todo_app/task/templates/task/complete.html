@@ -19,7 +19,7 @@
         <th>{{s.id}}</th>
         <td>{{s.taskTitle}}</td>
         <td>{{s.taskDescription}}</td>
-        <td>{{s.is_completed}}</td>
+        <td>completed</td>
         <td><a class="btn btn-primary" href="{%url 'edittask' id=s.id%}">edit</a><a class="btn btn-danger"  href="{% url 'deletetask' id=s.id%}">delete</a></td>
       </tr> 
       {% endif %}
