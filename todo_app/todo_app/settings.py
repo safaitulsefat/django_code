@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
+import os
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -128,3 +130,15 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+
+
+# Email configuration
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST =  "smtp.gmail.com" # SMTP server host (e.g., 'smtp.example.com')
+EMAIL_PORT = 587  # SMTP server port (default is 587 for TLS)
+EMAIL_USE_TLS = True  # Set to True if your email server requires TLS, False otherwise
+EMAIL_HOST_USER = "safaituli44@gmail.com"  # Your email username
+EMAIL_HOST_PASSWORD = ""  # Your email password or app-specific password
+ 

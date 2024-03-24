@@ -5,9 +5,11 @@
     <thead>
       <tr>
         <th scope="col">id</th>
+        <th scope="col">Priority</th>
         <th scope="col">task title</th>
         <th scope="col">task discreption</th>
         <th scope="col">is completed</th>
+        <th scope="col">Due Date</th>
         <th scope="col">Action</th>
       </tr>
     </thead>
@@ -17,9 +19,11 @@
      {% if not s.is_completed %}
       <tr>
         <th>{{s.id}}</th>
+        <td>{{s.priority}}</td>
         <td>{{s.taskTitle}}</td>
         <td>{{s.taskDescription}}</td>
         <td>incompleted</td>
+        <td>{{s.due_date}}</td>
         <td><a class="btn btn-primary" href="{%url 'edittask' id=s.id%}">edit</a><a class="btn btn-danger"  href="{% url 'deletetask' id=s.id%}">delete</a><a class="btn btn-secondary"  href="{% url 'completed' id=s.id%}">completed</a></td>
       </tr> 
       {% endif %}
@@ -27,4 +31,6 @@
     
     </tbody>
   </table>
+  <a href="?sort_by_priority=1">Sort by Priority</a>
+  <a href="?sort_by_due_date=1">Sort by Due Date</a>
 {% endblock %}

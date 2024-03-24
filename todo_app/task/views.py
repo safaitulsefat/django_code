@@ -14,7 +14,8 @@ from task.models import TaskModel
 #         task = taskForm()
 #     return render(request,'task/home.html',{'task':task})
 
-
+def homepage(request):
+    return render(request,"base.html")
 
 def home(request):
     if request.user.is_authenticated:
@@ -24,7 +25,7 @@ def home(request):
             if task.is_valid():
                 task_instance = task.save(commit=False)   
                 task_instance.user_id = user_id  
-                task_instance.save()  
+                task_instance.save() 
         else:  
             task = taskForm()
         return render(request, 'task/home.html', {'task': task})
@@ -36,7 +37,15 @@ def show_task(request):
    
     if request.user.is_authenticated:
         user_id = request.user.id
-    show = TaskModel.objects.filter(user_id=user_id)
+    show = TaskModel.objects.all()
+    sort_by_priority = request.GET.get('sort_by_priority')
+    if sort_by_priority:
+        show = show.order_by('priority')
+    
+    sort_by_due_date = request.GET.get('sort_by_due_date')
+    if sort_by_due_date:
+        show = show.order_by('due_date')
+
     return render(request,'task/show.html',{'show':show})
 
 def edit_task(request,id):
