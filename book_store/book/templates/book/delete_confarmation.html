@@ -2,9 +2,10 @@
 {% load crispy_forms_tags %}
 {% block content %}
 <div style="width: 80%; margin: auto;">
+    <h1>Are you sure delete this?</h1>
 <form  method="post">
     {% csrf_token %}
-    {{form|crispy}}
+    {{form}}
     <input class="btn btn-primary" type="submit" value="Submit">
 </form>
 </div>
